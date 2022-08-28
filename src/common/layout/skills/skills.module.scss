@@ -1,0 +1,74 @@
+@import "src/styles/variable";
+
+.skills {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid $grey;
+  margin-top: 16px;
+  font-family: $font_SF_UI_Text;
+
+  .profileData {
+    h2 {
+      font-size: 20px;
+      font-weight: 800;
+      color: $text-primary;
+      margin-bottom: 12px;
+    }
+
+    .skills_item {
+      display: flex;
+      flex-wrap: wrap;
+
+      .item {
+        color: $secondary;
+        background-color: #e3f9f6;
+        border-radius: 20px;
+        margin-right: 8px;
+        padding: 4px 12px;
+      }
+
+      .organization {
+        font-weight: 600;
+
+        p {
+          font-size: 14px;
+          font-weight: 400;
+        }
+      }
+    }
+
+    .addTools {
+      display: flex;
+      align-items: center;
+      margin: 10px 0 18px;
+
+      img {
+        width: 24px;
+        height: 24px;
+        margin: 0 11px 0 3px;
+      }
+
+      button {
+        font-size: 14px;
+        line-height: 20px;
+        color: $primary-button;
+        background-color: inherit;
+      }
+    }
+  }
+
+  .profileNavigate {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 30px;
+    height: 100px;
+    cursor: pointer;
+
+    img {
+      width: 16px;
+      height: 16px;
+    }
+  }
+}
