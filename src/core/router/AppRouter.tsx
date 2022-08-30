@@ -8,17 +8,17 @@ import { NotFound } from '../../pages/NotFound';
 import { useAppSelector } from '../redux/app/hooks';
 import { ProtectedRoute } from './ProtectedRoutes';
 
-const NewsPage = React.lazy(() => import('../../pages/NewsPage')
+const NewsPage = React.lazy(() => import(/* webpackChunkName:"NewsPage" */'../../pages/NewsPage')
   .then(module => ({ default: module.NewsPage })))
-const User = React.lazy(() => import('../../pages/User')
+const User = React.lazy(() => import(/* webpackChunkName:"User" */'../../pages/User')
   .then(module => ({ default: module.User })))
-const Settings = React.lazy(() => import('../../common/components/settings/Settings')
+const Settings = React.lazy(() => import(/* webpackChunkName:"Settings" */'../../common/components/settings/Settings')
   .then(module => ({ default: module.Settings })))
-const Chats = React.lazy(() => import('../../pages/Chats')
+const Chats = React.lazy(() => import(/* webpackChunkName:"Chats" */'../../pages/Chats')
   .then(module => ({ default: module.Chats })))
-const Notification = React.lazy(() => import('../../pages/Notification')
+const Notification = React.lazy(() => import(/* webpackChunkName:"Notification" */'../../pages/Notification')
   .then(module => ({ default: module.Notification })))
-const Registration = React.lazy(() => import('../../pages/Registration')
+const Registration = React.lazy(() => import(/* webpackChunkName:"Registration" */'../../pages/Registration')
   .then(module => ({ default: module.Registration })))
 
 export const AppRouter = () => {
