@@ -1,7 +1,7 @@
 import { ChangeEvent, useState } from 'react';
 import { Input } from '../common/ui-elements/Input/Input';
-import filter from '../assets/icons/filter.png';
-import search from '../assets/icons/search.png';
+import filter from '../assets/icons/filter.webp';
+import search from '../assets/icons/search.webp';
 import { SwiperSlider } from '../modules/timeline/SwiperSlider';
 import { Timeline } from '../common/layout/timeline/Timeline';
 import { useAppSelector } from '../core/redux/app/hooks';

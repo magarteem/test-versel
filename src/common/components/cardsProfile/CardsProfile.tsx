@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
-import plas from '../../../assets/icons/plas.png';
-import Pencil from '../../../assets/icons/Pencil.png';
-import settings from '../../../assets/icons/settings.png';
+import plas from '../../../assets/icons/plas.webp';
+import Pencil from '../../../assets/icons/Pencil.webp';
+import settings from '../../../assets/icons/settings.webp';
 import avatarTest from '../../../assets/images/avatarTest.webp';
 import { RouteNames } from '../../variables/RouteNames';
 import s from './cardsProfile.module.scss';

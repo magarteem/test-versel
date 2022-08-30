@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import { Link } from 'react-router-dom';
-import arrowRight from '../../../assets/icons/arrowRight.png';
-import orangePlas from '../../../assets/icons/orangePlas.png';
+import arrowRight from '../../../assets/icons/arrowRight.webp';
+import orangePlas from '../../../assets/icons/orangePlas.webp';
 import { SkillsDataType } from '../../../core/redux/types/userSliceType';
 import s from './skills.module.scss';
 

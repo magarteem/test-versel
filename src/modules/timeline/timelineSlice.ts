@@ -1,19 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit';
-import testImg4 from '../../assets/images/16160153541.webp';
-import testImg5 from '../../assets/images/16160153782.webp';
-import testImg6 from '../../assets/images/161602365020.webp';
-import testImg2 from '../../assets/images/161602370523.webp';
-import testImg3 from '../../assets/images/161602375626.webp';
-import calendar from '../../assets/images/kalendar.png';
-import news from '../../assets/images/news.png';
-import people1 from '../../assets/images/people1.png';
-import people2 from '../../assets/images/people2.png';
-import photoSkill_1 from '../../assets/images/photoSkill_1.webp';
-import photoSkill_2 from '../../assets/images/photoSkill_2.png';
-import photoSkill_3 from '../../assets/images/photoSkill_3.png';
-import smiley from '../../assets/images/smiley.png';
-import testImg from '../../assets/images/testImg.webp';
-import testImg1 from '../../assets/images/testImg1.webp';
+import imgTest1 from '../../assets/images/imgTest1.webp';
+import imgTest2 from '../../assets/images/imgTest2.webp';
+import imgTest3 from '../../assets/images/imgTest3.webp';
+import imgTest4 from '../../assets/images/imgTest4.webp';
+import imgTest5 from '../../assets/images/imgTest5.webp';
+import imgTest6 from '../../assets/images/imgTest6.webp';
+import imgTest7 from '../../assets/images/imgTest7.webp';
+import imgTest8 from '../../assets/images/imgTest8.webp';
+import imgTest9 from '../../assets/images/imgTest9.webp';
+import imgTest10 from '../../assets/images/imgTest10.webp';
+import calendar from '../../assets/images/calendar.webp';
+import news from '../../assets/images/news.webp';
+import people1 from '../../assets/images/people1.webp';
+import people2 from '../../assets/images/people2.webp';
+import smiley from '../../assets/images/smiley.webp';
 import { InitialStateMicroType } from '../../core/redux/types/timelinSliceType';
 
 const timelineCardsData = [
@@ -40,13 +40,13 @@ const timelineCardsData = [
     name: 'Репетиционная база ЭРТВ-1',
     timeAgo: '12 мин. назад',
     photo: [
-      photoSkill_1,
-      testImg1,
-      photoSkill_2,
-      testImg,
-      testImg3,
-      photoSkill_3,
-      testImg2,
+      imgTest6,
+      imgTest10,
+      imgTest7,
+      imgTest9,
+      imgTest5,
+      imgTest8,
+      imgTest1,
     ],
     title: 'Шесть площадок',
     skills: ['Гитара', 'Скрипка'],
@@ -57,16 +57,16 @@ const timelineCardsData = [
     name: 'Репетиционная база ЭРТВ-2',
     timeAgo: '38 мин. назад',
     photo: [
-      photoSkill_1,
-      testImg3,
-      testImg4,
-      testImg1,
-      photoSkill_2,
-      testImg,
-      testImg5,
-      photoSkill_3,
-      testImg6,
-      testImg2,
+      imgTest6,
+      imgTest5,
+      imgTest4,
+      imgTest10,
+      imgTest7,
+      imgTest9,
+      imgTest3,
+      imgTest8,
+      imgTest2,
+      imgTest1,
     ],
     title: 'Шесть площадок',
     skills: ['Гитара', 'Скрипка'],

@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import eye_open from '../../assets/icons/eye_open.png';
-import eye_close from '../../assets/icons/eye_close.png';
+import eye_open from '../../assets/icons/eye_open.webp';
+import eye_close from '../../assets/icons/eye_close.webp';
 import { Controller, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { InButton } from '../../common/ui-elements/button/InButton';
