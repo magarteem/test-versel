@@ -1,0 +1,12 @@
+@import "src/styles/variable";
+
+.headerWrapper {
+  background-color: $secondary;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-bottom-left-radius: 24px;
+  border-bottom-right-radius: 24px;
+  color: $white;
+  padding: 24px 16px;
+}
