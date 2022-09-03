@@ -6,9 +6,7 @@ export const App = () => {
   return (
     <div className="App">
 
-      {/* for test */}
-      <ButtonInstallPwa />
-      {/* for test */}
+
       <AppRouter />
     </div>
   );
