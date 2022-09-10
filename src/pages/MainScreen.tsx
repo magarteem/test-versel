@@ -12,7 +12,7 @@ export const MainScreen = () => {
       <section className={s.footer}>
         <NavigateButton />
         {/* for test */}
-        <ButtonInstallPwa />
+        {/*<ButtonInstallPwa />*/}
         {/* for test */}
       </section>
     </div>

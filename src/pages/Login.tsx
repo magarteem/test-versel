@@ -9,9 +9,9 @@ export const Login = () => {
     <section className={s.section}>
       <FormLogin />
       <div className={s.sign_in}>
-        <span>Нет аккаунта?</span>
+        <span>Нет аккаунта??</span>
         <Link to={RouteNames.REGISTER}>
-          <button>Зарегистрироваться</button>
+          <button>Зарегистрироватьсяя</button>
         </Link>
       </div>
 

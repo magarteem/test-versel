@@ -29,14 +29,17 @@ export const ButtonInstallPwa = () => {
     return null;
   }
   return (
-    <button
-      style={{ backgroundColor: "red", width: "150px", height: "50px" }}
-      id="setup_button"
-      aria-label="Install app"
-      title="Install app"
-      onClick={onClick}
-    >
-      Instal11111l
-    </button>
+    <>
+      <h1>Install</h1>
+      <button
+        style={{ backgroundColor: "red", width: "150px", height: "50px" }}
+        id="setup_button"
+        aria-label="Install app"
+        title="Install app"
+        onClick={onClick}
+      >
+        Instal11111l
+      </button>
+    </>
   );
 };
