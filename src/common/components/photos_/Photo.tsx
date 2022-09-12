@@ -14,12 +14,12 @@ export const Photo = ({ photo }: PhotosPropsType) => {
 
   return <div>
     {
-      photo.map(x => (
-        <div key={x.id}>
-          <h2>{x.title}</h2>
-          <img src={x.thumbnailUrl} alt={x.thumbnailUrl} />
-        </div>
-      ))
+      //photo.map(x => (
+      //  <div key={x.id}>
+      //    <h2>{x.title}</h2>
+      //    <img src={x.thumbnailUrl} alt={x.thumbnailUrl} />
+      //  </div>
+      //))
     }
   </div>
 };
