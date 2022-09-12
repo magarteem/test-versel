@@ -26,7 +26,7 @@ const notificationSlise = createSlice({
         console.log(actions.payload);
 
         state.isLoading = false
-        //state.photo = actions.payload
+        state.photo = actions.payload
 
       })
       .addCase(notificationThunk.rejected.type, (state: InitialStateNotificationType, actions: PayloadAction<any>) => {

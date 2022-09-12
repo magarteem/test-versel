@@ -6,20 +6,20 @@ import { notificationThunk } from '../modules/notification/notificationThunk';
 import s from './styles/tempStyle.module.scss';
 
 export const Notification = () => {
-  //const dispatch = useAppDispatch()
-  //const { error, isLoading, photo } = useAppSelector(state => state.notificationSliceReducer)
+  const dispatch = useAppDispatch()
+  const { error, isLoading, photo } = useAppSelector(state => state.notificationSliceReducer)
 
-  //console.log(photo)
-  //useEffect(() => {
-  //  console.log("1")
-  //  //dispatch(notificationThunk(1))
-  //}, []);
+  console.log(photo)
+  useEffect(() => {
+    console.log("1")
+    dispatch(notificationThunk(1))
+  }, []);
 
 
   return (
     <div className={s.tempStyle}>
       <h1>Notification</h1>
-      {/*{isLoading ? <PreLoader /> : <Photo photo={photo} />}*/}
+      {isLoading ? <PreLoader /> : <Photo photo={photo} />}
 
     </div>
   )
