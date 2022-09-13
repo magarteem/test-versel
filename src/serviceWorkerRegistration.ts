@@ -78,6 +78,7 @@ function registerValidSW(swUrl: string, config?: Config) {
                 'New content is available and will be used when all ' +
                 'tabs for this page are closed. See https://cra.link/PWA.'
               );
+              alert("доступно обновление, зактойте все вкладки что бы принять обнову")
 
               // Execute callback
               if (config && config.onUpdate) {
