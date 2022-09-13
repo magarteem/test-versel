@@ -1,12 +1,18 @@
 /// <reference lib="webworker" />
 /* eslint-disable no-restricted-globals */
-
 // This service worker can be customized!
 // See https://developers.google.com/web/tools/workbox/modules
 // for the list of available Workbox modules, or add any other
 // code you'd like.
 // You can also remove this file if you'd prefer not to use a
 // service worker, and the Workbox build step will be skipped.
+// eslint-disable глобальные значения без ограничений 
+// Этот сервис-воркер можно настроить!
+// См. https://developers.google.com/web/tools/workbox/modules
+// для списка доступных модулей Workbox или добавьте любой другой
+// код, который вам нужен.
+// Вы также можете удалить этот файл, если не хотите использовать
+// service worker, и этап сборки Workbox будет пропущен.
 
 import { clientsClaim } from 'workbox-core';
 import { ExpirationPlugin } from 'workbox-expiration';
@@ -22,32 +28,45 @@ clientsClaim();
 // Their URLs are injected into the manifest variable below.
 // This variable must be present somewhere in your service worker file,
 // even if you decide not to use precaching. See https://cra.link/PWA
+// Предварительно кэшируйте все ресурсы, созданные в процессе сборки.
+// Их URL-адреса вводятся в переменную манифеста ниже.
+// Эта переменная должна присутствовать где-то в вашем сервис-воркере,
+// даже если вы решите не использовать предварительное кэширование. См. https://cra.link/PWA
 precacheAndRoute(self.__WB_MANIFEST);
 
 // Set up App Shell-style routing, so that all navigation requests
 // are fulfilled with your index.html shell. Learn more at
 // https://developers.google.com/web/fundamentals/architecture/app-shell
+// Настройте маршрутизацию в стиле App Shell, чтобы все запросы навигации
+// выполняются с вашей оболочкой index.html. Узнайте больше на
+// https://developers.google.com/web/fundamentals/architecture/app-shell
 const fileExtensionRegexp = new RegExp('/[^/?]+\\.[^/]+$');
 registerRoute(
   // Return false to exempt requests from being fulfilled by index.html.
+  // Возвращаем false, чтобы исключить запросы из выполнения index.html.
   ({ request, url }: { request: Request; url: URL }) => {
     // If this isn't a navigation, skip.
+    // Если это не навигация, пропустить.
     if (request.mode !== 'navigate') {
       return false;
     }
 
     // If this is a URL that starts with /_, skip.
+    // Если это URL-адрес, начинающийся с /_, пропустить.
     if (url.pathname.startsWith('/_')) {
       return false;
     }
 
     // If this looks like a URL for a resource, because it contains
     // a file extension, skip.
+    // Если это похоже на URL-адрес ресурса, потому что он содержит
+    // расширение файла, пропустить.
     if (url.pathname.match(fileExtensionRegexp)) {
       return false;
     }
 
     // Return true to signal that we want to use the handler.
+    // Возвращаем true, чтобы сигнализировать о том, что мы хотим использовать обработчик.
     return true;
   },
   createHandlerBoundToURL(process.env.PUBLIC_URL + '/index.html')
@@ -55,16 +74,22 @@ registerRoute(
 
 // An example runtime caching route for requests that aren't handled by the
 // precache, in this case same-origin .png requests like those from in public/
+// Пример маршрута кэширования во время выполнения для запросов, которые не обрабатываются
+// предварительный кэш, в данном случае запросы .png того же происхождения, что и в общедоступных/
 registerRoute(
   // Add in any other file extensions or routing criteria as needed.
+  // При необходимости добавьте любые другие расширения файлов или критерии маршрутизации.
   ({ url }) =>
     url.origin === self.location.origin && url.pathname.endsWith('.png'),
   // Customize this strategy as needed, e.g., by changing to CacheFirst.
+  // Настройте эту стратегию по мере необходимости, например, изменив на CacheFirst.
   new StaleWhileRevalidate({
     cacheName: 'images',
     plugins: [
       // Ensure that once this runtime cache reaches a maximum size the
       // least-recently used images are removed.
+      // Гарантируем, что как только этот кеш среды выполнения достигнет максимального размера,
+      // последние использованные изображения удаляются.
       new ExpirationPlugin({ maxEntries: 50 }),
     ],
   })
@@ -72,6 +97,8 @@ registerRoute(
 
 // This allows the web app to trigger skipWaiting via
 // registration.waiting.postMessage({type: 'SKIP_WAITING'})
+// Это позволяет веб-приложению запускать skipWaiting через
+// Registration.waiting.postMessage({type: 'SKIP_WAITING'})
 self.addEventListener('message', (event) => {
   if (event.data && event.data.type === 'SKIP_WAITING') {
     self.skipWaiting();
@@ -79,3 +106,52 @@ self.addEventListener('message', (event) => {
 });
 
 // Any other custom service worker logic can go here.
+// Здесь может располагаться любая другая пользовательская логика сервисного работника.
+//!  -------------------------------------------------------------------------------
+// вызывается  в любой момоент когда делает запрос приложение
+const dynamicCacheName = "d-app-v1"; // имя кэша динамического
+self.addEventListener("fetch", (event) => {
+  console.log("Fetch", event.request.url);
+
+  const { request } = event;
+
+  // получаем изначально из кэш а потом  от сети
+  // перехватываем запрос
+
+  // если нет инета - то не fetch а тянем из кэша
+  const url = new URL(request.url);
+  if (url.origin === location.origin) {
+    console.log("cache")
+    event.respondWith(cacheFirst(request));
+  } else {
+    console.log("net")
+    //@ts-ignore    
+    event.respondWith(networkFirst(request));
+  }
+});
+
+async function cacheFirst(request: any) {
+  // проверяем есть ли в кэше  если нет то fetch
+  const cached = await caches.match(request);
+  console.log(fetch)
+  return cached ?? (await fetch(request));
+}
+
+// пытаемся получить  данные по сити, если нет то получаем из кэша
+async function networkFirst(request: any) {
+  const cache = await caches.open(dynamicCacheName);
+  try {
+    const response = await fetch(request);
+    // если получили данные с  сервера - response то заносим в динамический кэш
+    await cache.put(request, response.clone());
+    return response;
+  } catch (e) {
+    // если нет сети пробуем получить данные с кэша
+    const cached = await cache.match(request);
+    console.log("----------");
+    console.log(cached);
+    console.log("----------");
+    // если данных нет в кэшк то вернём offline страницу
+    return cached ?? (await caches.match("offline.html"));
+  }
+}
